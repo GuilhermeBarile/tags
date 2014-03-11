@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tags Example</title>
+
+    <link rel="stylesheet" href="bower_components/metaproject/build/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/metaproject/build/metaproject.css"/>
+
+</head>
+
+<body class="light-gray with-header">
+<header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">Tags Example</a>
+            <ul class="nav">
+                <li>
+                    <a href="#items">Items</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- hardcoded components with defined urls -->
+<div class="container page" data-bind="url: '/'">
+    <h1>Welcome to the tags example</h1>
+</div>
+
+<!-- external modules are loaded using the include binding -->
+<div class="container page"
+     data-bind="include: 'modules/items.html', url : 'items'"></div>
+
+
+<!-- TODO remove underscore dependency on metaproject.data (jquery is enough) -->
+<!--<script type="text/javascript"-->
+        <!--src="../objectiveweb/console/libs/underscore/underscore-1.3.3.js"></script>-->
+
+<!-- base dependencies -->
+
+<script type="text/javascript"
+        src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+        src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+<script type="text/javascript"
+        src="bower_components/metaproject/build/libs/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="bower_components/modernizr/modernizr.js"></script>
+<script type="text/javascript"
+        src="bower_components/knockout.js/knockout.js"></script>
+<script type="text/javascript"
+        src="bower_components/knockout-mapping/knockout.mapping.js"></script>
+<script type="text/javascript"
+        src="bower_components/knockout.punches/knockout.punches.min.js"></script>
+<script type="text/javascript"
+        src="bower_components/knockout-postbox/build/knockout-postbox.min.js"></script>
+
+<!-- metaproject -->
+
+<script type="text/javascript"
+        src="bower_components/metaproject/build/metaproject.full.js"></script>
+
+<!-- Application -->
+
+<script type="text/javascript" src="js/models.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

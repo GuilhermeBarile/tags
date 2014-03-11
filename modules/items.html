@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html>
+<body>
+<section id="items" class="row">
+    <div class="span8">
+        <!-- the items listing -->
+        <div>
+            <button class="btn btn-success" data-bind="click: create">New Item</button>
+        </div>
+        <div data-bind="grid: items"></div>
+    </div>
+    <div class="span4" data-bind="with: model">
+        <!-- the item editor -->
+        <input type="text" data-bind="value: name">
+
+        <button data-bind="click: function() { $root.save() }" class="btn btn-primary">Save</button>
+
+        <button data-bind="click: function() { $root.close() }" class="btn">Cancel</button>
+    </div>
+</section>
+<script>
+    jQuery(function ($) {
+
+        var ItemsModel = function ItemsModel() {
+            var self = this;
+
+            self.items = new metaproject.ui.Grid(models.Item.query({}), {
+                        'columns': [
+                            {
+                                label: 'ID',
+                                value: 'id'
+                            },
+                            {
+                                label: 'Item',
+                                value: 'name'
+                            }
+                        ],
+                        'actions': [
+                            {
+                                label: 'Edit',
+                                fn: function(me) {
+                                    self.model(me);
+
+                                },
+                                css: {
+                                    'btn': true,
+                                    'btn-mini': true,
+                                    'btn-success': true
+                                }
+                            }
+                        ]
+                    }
+            );
+
+            self.model = ko.observable();
+
+            self.close = function() {
+                self.model(null);
+            };
+
+            self.create = function() {
+                self.model(new models.Item());
+            };
+
+            self.load = function(id) {
+                models.Item.load(id, self.model);
+            };
+
+            self.save = function() {
+                self.model().save();
+                self.model(null);
+            };
+        };
+
+
+        $('#items').applyBindings(new ItemsModel());
+    });
+
+
+</script>
+</body>
+</html>
