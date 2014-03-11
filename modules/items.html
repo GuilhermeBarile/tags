@@ -14,6 +14,25 @@
         <!-- the item editor -->
         <input type="text" data-bind="value: name">
 
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody data-bind="foreach: tags">
+            <tr>
+                <td>{{ $data }}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+
+                <td>
+
+                        <input type="text" id="new-tag"/><input type="submit" value="Add tag" data-bind="click: function() {
+                            this.tags.push($('#new-tag').val());
+                        }"></td>
+
+
+            </tr>
+            </tfoot>
+        </table>
         <button data-bind="click: function() { $root.save() }" class="btn btn-primary">Save</button>
 
         <button data-bind="click: function() { $root.close() }" class="btn">Cancel</button>
