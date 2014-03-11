@@ -1,8 +1,10 @@
-= Tags Example =
+Tags Example
+============
 
 ![Tags](assets/screenshot.png)
 
-== Running the demo ==
+Deploying this demo
+-------------------
 
 On your project root
 
@@ -25,7 +27,8 @@ This should be your final layout
             items.html
         ...
 
-== Application Structure ==
+Application Structure
+---------------------
 
 The /tags directory contains our application, the only required file is `_init.php` on which we define our data domains.
 
@@ -37,9 +40,13 @@ The UI is structured as follows
 
 * Application modules are stored on the `modules` folder
 * All dependencies are loaded on the `index.html` file.
-    * Modules are embedded on the main page using the `include` data-binding
     * URLs are defined on the parent element, modules are embedded on the main page using the `include` data-binding
-    `<div class="container page" data-bind="include: 'modules/items.html', url : 'items'"></div>`
+    * On this demo, `<div class="container page" data-bind="include: 'modules/items.html', url : 'items'"></div>` maps
+    the `tags/index.html#items` url to the `items.html` module
 * Data Models are defined on `js/models.js`
 * Application is initialized at `js/main.js`
 
+Each module is defined on an independent HTML file, which contains the module markup, the relevant javascript code
+and its dependencies.
+
+The items module source is located at https://github.com/guigouz/tags/blob/master/modules/items.html
